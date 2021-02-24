@@ -54,29 +54,29 @@ public class BankAccountTester {
 			if (command.equals("withdraw")) {
 				// Get amount to withdraw
 				System.out.print("Please input the amount you would like to withdraw: $");
-				int amt = in.nextInt();
+				double amt = in.nextDouble();
 				
 				// Check to make sure they have enough funds to withdraw amount
 				if (amt <= myBankAccount.getBalance()) {
 					// If yes, withdraw
 					myBankAccount.withdraw(amt);
-					System.out.println("Withdrew $"+amt+". New balance: $"+myBankAccount.getBalance());
+					System.out.printf("Withdrew $%.2f. New balance: $%.2f", amt, myBankAccount.getBalance());
 				} else {
 					// If no, throw error
-					System.out.println("Invalid funds to withdraw $"+amt+". Available: $"+myBankAccount.getBalance());
+					System.out.printf("Invalid funds to withdraw $"+amt+". Available: $%.2f",myBankAccount.getBalance());
 				}
 			// If "deposit" was inputed,
 			} else if (command.equals("deposit")) {
 				// Get amount to deposit
 				System.out.print("Please input the amount you would like to deposit: $");
-				int amt = in.nextInt();
+				double amt = in.nextDouble();
 				// Deposit into account
 				myBankAccount.deposit(amt);
-				System.out.println("Deposited $"+amt+". New balance: $"+myBankAccount.getBalance());
+				System.out.printf("Deposited $%.2f. New balance: $%.2f", amt, myBankAccount.getBalance());
 			// If "balance" was inputed,
 			} else if (command.equals("balance")) {
 				// Display balance
-				System.out.println("Your current balance is $"+myBankAccount.getBalance());
+				System.out.printf("Your current balance is $%.2f", myBankAccount.getBalance());
 			// If "stop" was inputed
 			} else if (command.equals("stop")) {
 				System.out.println("Thank you for your business, have a great day!");
