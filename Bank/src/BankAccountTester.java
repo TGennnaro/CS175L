@@ -2,13 +2,6 @@ import java.util.Scanner;
 public class BankAccountTester {
 
 	public static void main(String[] args) {
-		/*
-		 * Disclaimer:
-		 * Yes, I realize I went very overboard with this assignment,
-		 * but it was a fun project to work on and I wanted to test
-		 * my knowledge of Java. I figured it would be more fun if I
-		 * over complicated the assignment.
-		 */
 		// Scanner definition
 		Scanner in = new Scanner(System.in);
 		
@@ -35,8 +28,11 @@ public class BankAccountTester {
 		// Ask for initial deposit
 		System.out.print("How much would you like your initial deposit to be? $");
 		int startBal = in.nextInt();
+		
+		System.out.print("What interest rate are you requesting? (Must be approved by bank): ");
+		double interest = in.nextDouble();
 		// Create object
-		BankAccount myBankAccount = new BankAccount(startBal);
+		BankAccount myBankAccount = new BankAccount(startBal, interest);
 		
 		// Confirm account opening
 		System.out.println("Your account has been opened with a balance of $"+startBal+".");
@@ -46,7 +42,7 @@ public class BankAccountTester {
 		
 		while (running) {
 			// Display available commands
-			System.out.print("\nInput a command: Withdraw | Deposit | Balance | Stop | Help: ");
+			System.out.print("\nInput a command: Withdraw | Deposit | Balance | Interest | Stop | Help: ");
 			// Get the inputed command
 			String command = in.next().toLowerCase();
 			
@@ -77,6 +73,8 @@ public class BankAccountTester {
 			} else if (command.equals("balance")) {
 				// Display balance
 				System.out.printf("Your current balance is $%.2f", myBankAccount.getBalance());
+			} else if (command.equals("interest")) {
+				System.out.printf("Your current accumulated interest is $%.2f at a rate of "+myBankAccount.getInterest()+".", myBankAccount.calcInterest());
 			// If "stop" was inputed
 			} else if (command.equals("stop")) {
 				System.out.println("Thank you for your business, have a great day!");

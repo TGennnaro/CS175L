@@ -5,13 +5,15 @@
 public class BankAccount
 {
    private double balance;
+   private double interestPct;
 
    /**
       Constructs a bank account with zero balance.
    */
-   public BankAccount(double amount)
+   public BankAccount(double amount, double interest)
    {
       balance = amount;
+      interestPct=interest;
    }
 
    /**
@@ -32,6 +34,10 @@ public class BankAccount
    {
       balance = balance - amount;
    }
+   
+   public double calcInterest() {
+	   return balance*interestPct;
+   }
    /**
       Gets the current balance of this bank account.
       @return the current balance
@@ -39,5 +45,9 @@ public class BankAccount
    public double getBalance()
    {
       return balance;
+   }
+   
+   public double getInterest() {
+	   return interestPct;
    }
 }
