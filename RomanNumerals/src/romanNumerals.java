@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 public class romanNumerals {
 
 	public static void main(String[] args) {
-		String stringYear = JOptionPane.showInputDialog("Enter the year to convert:");
+		String stringYear = JOptionPane.showInputDialog("Enter the year to convert: ");
 		if (stringYear == null || stringYear.equals("")) {return;}
 		int year = Integer.parseInt(stringYear);
 		String roman = "";
