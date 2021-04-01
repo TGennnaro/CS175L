@@ -42,7 +42,7 @@ public class BankAccountTester {
 		
 		while (running) {
 			// Display available commands
-			System.out.print("\nInput a command: Withdraw | Deposit | Balance | Interest | Stop | Help: ");
+			System.out.print("\nInput a command: Withdraw | Deposit | Balance | Interest | Threshold | Stop | Help: ");
 			// Get the inputed command
 			String command = in.next().toLowerCase();
 			
@@ -75,6 +75,22 @@ public class BankAccountTester {
 				System.out.printf("Your current balance is $%.2f", myBankAccount.getBalance());
 			} else if (command.equals("interest")) {
 				System.out.printf("Your current accumulated interest is $%.2f at a rate of "+myBankAccount.getInterest()+".", myBankAccount.calcInterest());
+			// If "threshold" was inputed
+			} else if (command.equals("threshold")) { // ***** NEW SECTION ADDED *****
+				BankThreshold threshold = new BankThreshold();
+				boolean loop = true;
+				while (loop) {
+					System.out.print("Enter the interest threshold (Enter any letter to end): ");
+					if (in.hasNextDouble()) {
+						double th = in.nextDouble(); // Threshold was already taken, so I used th.
+						int months = threshold.calcThreshold(th, interest, myBankAccount.getBalance());
+						System.out.println("It will take "+months+" months to reach your threshold.");
+					} else {
+						@SuppressWarnings("unused") // To get rid of the annoying warnings for the variable...
+						String dummy = in.next(); // To prevent original loop from firing again.
+						loop = false;
+					}
+				} // ***** END OF NEW SECTION *****
 			// If "stop" was inputed
 			} else if (command.equals("stop")) {
 				System.out.println("Thank you for your business, have a great day!");
