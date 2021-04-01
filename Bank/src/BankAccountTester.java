@@ -90,7 +90,7 @@ public class BankAccountTester {
 						String dummy = in.next(); // To prevent original loop from firing again.
 						loop = false;
 					}
-				} // ***** END OF NEW SECTION *****
+				} // ***** END OF THE NEW SECTION *****
 			// If "stop" was inputed
 			} else if (command.equals("stop")) {
 				System.out.println("Thank you for your business, have a great day!");
